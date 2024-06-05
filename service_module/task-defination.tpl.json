@@ -1,0 +1,34 @@
+[
+  {
+    "name": "${task_name}",
+    "image": "${image_url}",
+    "cpu": 0,
+    "portMappings": [
+      {
+        "name": "${task_name}-443-tcp",
+        "containerPort": 443,
+        "hostPort": 443,
+        "protocol": "tcp"
+      }
+    ],
+    "essential": true,
+    "environment": [
+      {
+        "name": "region",
+        "value": "${region_name}"
+      },
+      {
+        "name": "env_secret",
+        "value": "${secret_name}"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${awslogs_group_name}",
+        "awslogs-region": "${region_name}",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
