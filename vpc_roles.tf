@@ -234,7 +234,7 @@ resource "aws_iam_policy" "combined_policy" {
 
 resource "aws_iam_role" "task_role" {
   name = var.ecs_task_role_name
-
+  # policy      = templatefile("${path.module}/task_role_policy.json", {}) similar we can do 
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
